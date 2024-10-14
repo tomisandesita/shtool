@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テキサスホールデム - しょーもない道具箱つーるおきば</title>
+    <meta name="description" content="テキサスホールデムポーカーの基本ルールと練習ツール">
+    <meta name="keywords" content="ポーカー, テキサスホールデム, 暇つぶし">
+    <meta name="robots" content="index, follow">
+    <link rel="app-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/x-icon"> <!-- ファビコンの追加 -->
+    <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#">
+        <meta property="og:title" content="テキサスホールデム - しょーもない道具箱">
+        <meta property="og:description" content="テキサスホールデムポーカーの基本ルールと練習ツール">
+        <meta property="og:url" content="https://tomisandesita.github.io/shtool/texasholdem/">
+        <meta property="og:image" content="https://tomisandesita.github.io/shtool/logo.png">
+        <meta property="og:site_name" content="しょーもない道具箱">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="テキサスホールデム">
+        <meta name="twitter:description" content="テキサスホールデムポーカーの基本ルールと練習ツール">
+        <meta name="twitter:image" content="https://tomisandesita.github.io/shtool/logo.png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .game-area {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: center;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            display: inline-block;
+            width: 50px;
+            height: 70px;
+            border: 1px solid #000;
+            margin: 5px;
+            background-color: #fff;
+            line-height: 70px;
+            text-align: center;
+            font-size: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Logo" class="logo">
+            <div class="nocolorlink"><a href="texasholdem.html"><h1>テキサスホールデムポーカー</h1></a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="tools.html" rel="noopener noreferrer">つーるおきば</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br><br><br><br>
+    <div class="top">
+        <h2>テキサスホールデムポーカーの遊び方</h2>
+        <p>テキサスホールデムは、2枚のホールカードと5枚のコミュニティカードを使って最高の手役を作ります。ベッティングラウンドと共に進行し、最終的に最も強い手を持つプレイヤーが勝利します。</p>
+        <div class="game-area">
+            <h3>ゲーム開始</h3>
+            <p>「スタート」ボタンを押して、ゲームを始めましょう！</p>
+            <button class="button" onclick="startGame()">スタート</button>
+            <div id="game-info" style="margin-top: 20px;"></div>
+            <div id="player-cards" style="margin-top: 20px;"></div>
+            <div id="community-cards" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            &copy; 2024 TOOLS SHOUMONAI<br><a href="https://www.youtube.com/channel/UCKG8x3kgEXAefSenOpFQj7Q/" rel="noopener noreferrer"><img src="image2.png" alt="Youtubelogo"></a> <a href="https://discord.gg/dtnPphHbpT" rel="noopener noreferrer"><img src="image3.png" alt="discordlogo"></a>
+        </p>
+    </footer>
+    <script>
+        function startGame() {
+            document.getElementById('game-info').innerHTML = 'ゲームが始まりました！カードを配布中...';
+            
+            // プレイヤーに2枚のホールカードを配布
+            let playerCards = drawCards(2);
+            displayCards(playerCards, 'player-cards', 'プレイヤーの手札');
+
+            // コミュニティカードの設定
+            let communityCards = drawCards(5);
+            setTimeout(() => {
+                displayCards(communityCards.slice(0, 3), 'community-cards', 'フロップ（3枚のカード）');
+            }, 2000);
+            setTimeout(() => {
+                displayCards(communityCards.slice(0, 4), 'community-cards', 'ターン（4枚目のカード）');
+            }, 4000);
+            setTimeout(() => {
+                displayCards(communityCards, 'community-cards', 'リバー（5枚目のカード）');
+            }, 6000);
+        }
+
+        function drawCards(count) {
+            const suits = ['♠', '♥', '♦', '♣'];
+            const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+            let cards = [];
+            for (let i = 0; i < count; i++) {
+                let suit = suits[Math.floor(Math.random() * suits.length)];
+                let value = values[Math.floor(Math.random() * values.length)];
+                cards.push(value + suit);
+            }
+            return cards;
+        }
+
+        function displayCards(cards, elementId, title) {
+            let container = document.getElementById(elementId);
+            container.innerHTML = '<h4>' + title + '</h4>';
+            cards.forEach(card => {
+                container.innerHTML += '<div class="card">' + card + '</div>';
+            });
+        }
+    </script>
+</body>
+</html>
