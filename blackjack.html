@@ -7,10 +7,8 @@
     <meta name="description" content="blackjack,暇つぶしのギャンブルはいいですよ！">
     <meta name="keywords" content="とみー,暇つぶし">
     <meta name="robots" content="index, follow">
-    <link rel="app-touch-icon" href="logo.png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="logo.png" type="image/x-icon"> <!-- ファビコンの追加 -->
-<head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#">
+    <link rel="icon" href="logo.png" type="image/x-icon">
     <meta property="og:title" content="ブラックジャックで暇をつぶそう">
     <meta property="og:description" content="ブラックジャックで暇をつぶそう!">
     <meta property="og:url" content="https://tomisandesita.github.io/shtool/blackjack/">
@@ -34,13 +32,18 @@
             line-height: 90px;
             font-size: 20px;
             background-color: white;
-            color:black ;
+            color: black;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
         .card.hidden {
             background-color: gray;
         }
         .game-info {
             margin-top: 20px;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -66,8 +69,8 @@
             <p id="player-total"></p>
             <div id="dealer-cards"></div>
             <p id="dealer-total"></p>
-            <button id="hit-button">ヒット</button>
-            <button id="stand-button">スタンド</button>
+            <button id="hit-button" class="hidden">ヒット</button>
+            <button id="stand-button" class="hidden">スタンド</button>
             <p id="result"></p>
         </div>
     </div>
@@ -151,6 +154,8 @@
 
             gameArea.classList.remove('hidden');
             startButton.classList.add('hidden');
+            hitButton.classList.remove('hidden');
+            standButton.classList.remove('hidden');
             displayCards();
             checkBlackjack();
         });
