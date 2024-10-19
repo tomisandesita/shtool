@@ -27,9 +27,22 @@
         window.location.href = "https://discord.gg/dtnPphHbpT";
     </script>
     <style>
+
 .top{
     text-align: center;
 }
+.spoiler {
+            background-color: black;
+            color: black;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .revealed {
+            background-color: transparent;
+            color: inherit;
+            cursor: default;
+        }
 
     </style>
 </head>
@@ -49,7 +62,29 @@
     <br><br> <br><br><br><br><br><br>
     <!-- ここからメイン要素置き場 -->
      <div class="top">
-        <p>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</p>
+        <marquee scrollamount="32" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="28" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="21" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="33" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="21" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="24" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="27" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="21" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="34" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+        <marquee scrollamount="29" truespeed>リダイレクト中です。リダイレクトされない場合は、<a href="https://discord.gg/dtnPphHbpT">こちらをクリック</a>してください。</marquee>
+            <hr>
+            <p>👇スポイラーを解除👇</p>
+            <span class="spoiler" onclick="revealSpoiler(this)">ほんとおもんないよね。</span>
+        
+            <script>
+        function revealSpoiler(element) {
+            element.classList.remove('spoiler');
+            element.classList.add('revealed');
+            element.style.color = 'black';
+        }
+            </script>
+            
+
      </div>
     <!--ここまでメイン要素置き場。-->
     <footer>
