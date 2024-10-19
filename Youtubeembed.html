@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>しょーもない道具箱つーるおきば</title>
+    <meta name="description" content="すごく暇つぶしのツールを出してるさいと。">
+    <meta name="keywords" content="とみー,暇つぶし">
+    <meta name="robots" content="index, follow">
+    <link rel="app-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo.png" type="image/x-icon"> <!-- ファビコンの追加 -->
+    <head prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# article: https://ogp.me/ns/article#">
+        <meta property="og:title" content="しょーもない道具箱ツールリスト">
+        <meta property="og:description" content="しょーもない暇つぶしツールとかだしているさいと。">
+        <meta property="og:url" content="https://tomisandesita.github.io/shtool/テンプレ/">
+        <meta property="og:image" content="https://tomisandesita.github.io/shtool/logo.png">
+        <meta property="og:site_name" content="しょーもない道具箱">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="しょーもない道具箱">
+        <meta name="twitter:description" content="しょーもない暇つぶしツールとかだしているさいと。">
+        <meta name="twitter:image" content="https://tomisandesita.github.io/shtool/logo.png">
+    <style>
+        .top {
+            text-align: center;
+        }
+        .input-container {
+            margin: 20px;
+        }
+        iframe {
+            margin-top: 20px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Logo" class="logo">
+            <div class="nocolorlink"><a href="テンプレ.html"><h1>ツール名をここに入れる</h1></a></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="tools.html" rel="noopener noreferrer">つーるおきば</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br><br><br><br><br><br><br><br>
+    <!-- ここからメイン要素置き場 -->
+    <div class="top">
+        <div class="input-container">
+            <h2>YouTube埋め込みリンク変換ツール</h2>
+            <input type="text" id="youtube-url" placeholder="YouTube動画のURLを入力してください" style="width: 300px;">
+            <button onclick="convertUrl()">変換</button>
+            <br><br>
+            <iframe id="youtube-embed" width="560" height="315" style="display:none;"></iframe>
+            <div id="embed-link" style="margin-top: 20px;"></div>
+            <div id="redirect-message" style="margin-top: 20px;"></div>
+            <br><h2>※たまに埋め込みにならない場合があります。<br></h2>
+            <p>Shortsやライブなどは埋め込みにならばい場合があります。</p
+        </div>
+    </div>
+    <!-- ここまでメイン要素置き場。 -->
+    <footer>
+        <p>
+            &copy; 2024 TOOLS SHOUMONAI<br>
+            <a href="https://www.youtube.com/channel/UCKG8x3kgEXAefSenOpFQj7Q/"target="_blank" rel="noopener noreferrer"><img src="image2.png" alt="Youtubelogo"></a>
+            <a href="https://discord.gg/dtnPphHbpT" rel="noopener noreferrer" target="_blank"><img src="image3.png" alt="discordlogo"></a>
+        </p>
+    </footer>
+
+    <script>
+        function convertUrl() {
+            const inputUrl = document.getElementById('youtube-url').value;
+            const videoId = inputUrl.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/) 
+                          || inputUrl.match(/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^?]+)/);
+            if (videoId) {
+                const embedUrl = `https://www.youtube.com/embed/${videoId[1]}`;
+                const iframe = document.getElementById('youtube-embed');
+                iframe.src = embedUrl;
+                iframe.style.display = 'block';
+
+                // 埋め込みリンクを表示
+                const embedLinkContainer = document.getElementById('embed-link');
+                embedLinkContainer.innerText = `埋め込みリンク: ${embedUrl}`;
+
+                // リダイレクトメッセージを表示し、指定時間後にリダイレクト
+                const redirectMessage = document.getElementById('redirect-message');
+                redirectMessage.innerText = `このページは5秒後に埋め込みリンクにリダイレクトされます。`;
+                
+                // 埋め込みリンクにリダイレクト
+                setTimeout(() => {
+                    window.location.href = embedUrl;
+                }, 1); // 5000ミリ秒（5秒）後にリダイレクト
+            } else {
+                alert("有効なYouTube動画のURLを入力してください。");
+            }
+        }
+    </script>
+</body>
+</html>
